@@ -30,7 +30,6 @@ def get_font_awesome_icons():
 
         icon_elements = driver.find_elements(By.XPATH, '//span[@class="icon-name"]')
         for icon in icon_elements:
-            print(icon)
             icons.append(icon.text.split('\n')[0])
 
     driver.quit()
@@ -38,5 +37,7 @@ def get_font_awesome_icons():
     return icons
 
 icons = get_font_awesome_icons()
-for icon in icons:
-    print(icon)
+with open('icons.txt', 'w') as f:
+    for icon in icons:
+        print(icon)
+        f.write(icon + '\n')
